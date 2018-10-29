@@ -1,0 +1,1 @@
+export const kitchen = ['Atta, flours and sooji','Cooking& baking needs','Dals& pulses','Dry fruits','Edible oils','Eggs','Fish& seafood','Jaggery','Masalas and spices','Mutton& lamb','Organic stables','Rice and rice products','Salt','Sausages, bacon& salami','Sugar','Vinegar']

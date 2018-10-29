@@ -1,0 +1,1 @@
+export const personal = ['Bath, face& hand wash','Deodorant& fragrances','Feminine hygiene','Hair care','Makeup','Mens grooming','Oral care','Skin care']

@@ -1,0 +1,173 @@
+div.pad{
+    padding: 1% 2.5% 2.5%;
+    /* border-bottom: 1px solid black; */
+}
+
+.centerIt{
+    text-align: center;
+}
+
+div.box{
+    /* position: relative; */
+    background: white;
+    cursor: pointer;
+    padding:3%;
+    border-radius: 5px;
+    margin-bottom: 1.5%;
+    box-shadow: 4px 4px 6px -1px rgba(0,0,0,0.3);
+    /* min-height: 330px; */
+    /* max-height: 330px; */
+}
+
+div.box.prod{
+    height: 100%;
+    padding: 0 3% !important;
+}
+
+div.textbox p{
+    margin-bottom: 1.25% !important;
+}
+
+div.textbox p.row{
+    width: 100%;
+    margin:0;
+}
+
+div.textbox p.row span.left{
+    padding: 0 !important;
+    text-align: left;
+}
+
+div.textbox p.row span.right{
+    padding: 0 !important;
+    text-align: right;
+}
+
+button.btn{
+    padding: 1% 2%;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-bottom: 3%;
+}
+
+div.box div.textbox h5.gcol{
+    color:darkgray;
+    min-height: 48px;
+}
+
+div.box div.textbox p.gcol{
+    color: slategray;
+    margin-bottom:3% !important;
+}
+
+div.box div.row.last{
+    margin-bottom: 2.5%;
+}
+
+div.box div.row.last p{
+    padding: 0 !important;
+}
+
+h4.mbott{
+    margin-bottom: 3%;
+}
+
+div.col-lg-3{
+    padding: 0 2.5%;
+    margin: 1% 0;
+}
+
+div.box.prod div.imgbox img{
+    margin-bottom: 1.5%;
+}
+
+div.imgbox img{
+    width: 100%;
+    border-radius: 5px;
+    max-height: 220px;
+    min-height: 220px;
+}
+
+div.textbox{
+    text-align: center;
+    /* position: absolute; */
+    /* bottom: 2.5%; */
+    width: 100%;
+    /* height: 11.5%; */
+    padding-top:3.5%;
+ 
+    color:black;
+    /* background: white; */
+    /* background: linear-gradient(0deg, rgba(0,0,0,0.7) 5%,rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.38) 50%, rgba(0,0,0,0.25) 75%, rgba(0,0,0,0.13) 90%,  rgba(0,0,0,0.02) 100%)  no-repeat */
+}
+
+div.box.prod{
+    cursor: auto;
+}
+
+div.box.prod div.textbox button.add{
+    cursor: pointer;
+    transition: 0.5s ease-in-out all;
+}
+
+div.box.prod div.textbox button.addsub{
+    border:none;
+    background:#0050EF;
+    color:white;
+    border-radius: 2px;
+    padding: 0.5% 3%;
+    cursor: pointer;
+    width:20px;
+    transition: 0.5s ease-in-out all;
+}
+
+div.textbox div.row.last div.rightIt{
+    padding-right: 0 !important;
+}
+
+div.box.prod div.textbox p.midaddsub{
+    display: inline-block;
+    margin: 0 5%;
+    font-weight: 500;
+}
+
+div.box.prod div.textbox p.highlight{
+    font-weight: 500;
+}
+
+div.textbox button.add{
+    border:none;
+    background:#0050EF;
+    color:white;
+    border-radius: 5px;
+    padding: 1% 8%;
+}
+
+div.textbox.prodtext{
+    text-align: left;
+}
+
+div.textbox p.extra{
+    min-height: 72px;
+}
+
+h2{
+    font-weight:700;
+}
+
+h4.alert{
+    color: red;
+    font-weight: 700;
+    text-align: center;
+}
+
+@media(min-width:991px){
+    h2{
+        font-size: 2.5vw;
+    }
+}
+
+img.load{
+    width: 15vh;
+    margin-top: 15%;
+}

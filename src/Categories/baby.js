@@ -1,0 +1,1 @@
+export const baby=['Baby accessories','Baby diapers& wipes','Baby food& formula','Baby Toiletries','Mothers& maternity']

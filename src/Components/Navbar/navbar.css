@@ -1,0 +1,87 @@
+div.imgIt{
+    vertical-align: text-bottom;
+}
+
+div.imgIt img{
+    width: 80%;
+    height: 7.2vw;
+}
+
+div.ibIt{
+    display: inline-block;
+}
+
+div.ibIt:nth-child(2){
+    padding-left: 0;
+}
+
+div.rightIt{
+    text-align: right;
+}
+
+div.row{
+    margin: 0;
+}
+
+div.rightIt h6{
+    margin-bottom: 1.5%;
+    margin-top: 1%;
+}
+
+div.searchIt{
+    height: 55%;
+}
+
+div.lsIt{
+    padding-top: 2%;
+}
+
+div.lsIt div h5{
+    cursor: pointer;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+div.lsIt div i{
+    position:relative;
+}
+
+div.midIt{
+        width: fit-content;
+    margin: auto;
+    font-size:20px;
+    cursor: pointer;
+}
+
+div.searchIt input{
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    border:none;
+    box-shadow: 0px 2px 15px 1px rgba(0,0,0,1);
+    padding-left: 1%;
+    font-size: 1.5vw;
+}
+
+div.searchIt input::placeholder{
+    color: #333;
+}
+
+div.nav{
+    background: #6A00FF;
+    color:white;
+}
+
+div.outside{
+    padding: 0;
+}
+
+div.centerIt{
+    text-align: center;
+}
+
+div.centerIt i{
+    font-size: 28px;
+    margin-top: 5%;
+    cursor: pointer;
+}

@@ -1,0 +1,14 @@
+div.cartCount{
+    background:black;
+    position:absolute;
+    top:0%;
+    right:0px;
+    border-radius:50%;
+    padding:4% 10%;
+}
+
+div.cartCount p.counter{
+    margin:0;
+    font-size:12px;
+    font-weight:900;
+}

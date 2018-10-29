@@ -1,0 +1,138 @@
+div.cartBox{
+    width: 300px;
+    position: absolute;
+    max-height: 400px;
+    min-height: 148px;
+    overflow-y: scroll;
+    transform: translate(-70%);
+    background: rgb(255,255,255);
+    z-index:9999999;
+    margin-top: 10%;
+    color:rgba(0,0,0,0.8);
+    padding: 10% 0% 0;
+    cursor:auto;   
+    /* overflow-x: hidden;  */
+}
+
+div.cartBox div.relate{
+    position: relative;
+}
+
+p.redIt{
+    color:red;
+    width: fit-content;
+    font-size: 12px;
+    cursor:pointer;
+    margin: 0 0 0 auto;
+}
+
+p.marginTop{
+    margin-top:5%;
+}
+
+div.imgparent{
+    padding: 0;
+}
+
+div.imgparent img{
+    width: 100%;
+    height: 92px !important;
+}
+
+h6.cartProductHeading{
+    font-size: 12px;
+}
+
+p.cartProductDesc{
+    font-size: 11px;
+    margin-bottom: 2.5%;
+    margin-top: 5%;
+}
+
+p.nomarg{
+    margin: 0;
+    position: relative;
+    height: 20px;
+}
+
+p.nomarg.value{
+    padding-left: 5%;
+}
+
+p.nomarg span.floating{
+    position: absolute;
+    top: -7px;
+}
+
+p.nomarg i{
+    position: absolute;
+}
+
+div.cartProducts i{
+    font-size: 14px;
+    cursor: pointer;
+    color:rgba(0,0,0,0.6);
+}
+
+div.cartProducts i.fa-trash{
+    color:red;
+}
+
+div.cartProducts{
+    margin:2% 0;
+    padding: 0 7.5%;
+}
+
+div.nopad{
+    padding: 0;
+}
+
+div.cartOps{
+    padding: 0;
+    text-align: left;
+}
+
+div.cartTotal{
+    background: darkslategray;
+    color: white;
+    padding: 2.5% 5%;
+}
+
+p.total{
+    padding: 0;
+    /* display: inline-block; */
+    text-align: left;
+    margin:0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+p.totalvalue{
+    padding: 0;
+    /* display: inline-block; */
+    text-align: right;
+    margin:0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+div.cartButton button{
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: lightskyblue;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+div.lastCart{
+    position: sticky;
+    z-index: 99999;
+    bottom: 0;
+}
+
+div.cartButton button.disable{
+    cursor: not-allowed !important;
+}

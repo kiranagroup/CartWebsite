@@ -1,0 +1,1 @@
+export const beverages = ['Water','Tea','Milk Drinks','Instant Coffee','Health drink, supplements','Fruits,juices& drinks','Energy& soft drinks','Coffee (Aroma & Concentrates)']

@@ -1,0 +1,1 @@
+export const misc = ['Appliances& electricals','Bakeware','Cigarettes','Cookware& non stick','Crockers and cutlery','Flask& casserole','Kitchen accessories','Pets food& accessories','Steel utensils','Storage& accessories']
