@@ -16,7 +16,10 @@ class Cart extends Component{
     clearCart(){
         Store.dispatch({type:'removeAll'});
     }
-    render(){
+    closeCart(){
+        Store.dispatch({type:'cartChange'});
+    }
+    render(){ 
         if(this.props.totalProducts>0){
             this.classes='';
         }
@@ -29,7 +32,7 @@ class Cart extends Component{
             );
         }
         return(
-            <div className="cartBox">
+            <div className="cartBox" onMouseLeave={this.closeCart.bind(this)}>
             <div className="relate">
                 <div className="row">
                     <h6 className="col-12 col-sm-12 centerIt">
