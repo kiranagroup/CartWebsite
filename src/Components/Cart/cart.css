@@ -2,7 +2,7 @@ div.cartBox{
     width: 300px;
     position: absolute;
     max-height: 400px;
-    min-height: 148px;
+    min-height: 130px;
     overflow-y: scroll;
     transform: translate(-70%);
     background: rgb(255,255,255);
@@ -12,6 +12,10 @@ div.cartBox{
     padding: 10% 0% 0;
     cursor:auto;   
     /* overflow-x: hidden;  */
+}
+
+div.hidden{
+    display: none;
 }
 
 div.cartBox div.relate{

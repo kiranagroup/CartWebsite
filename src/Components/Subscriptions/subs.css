@@ -52,7 +52,10 @@ button.btn{
 
 div.box div.textbox h5.gcol{
     color:darkgray;
-    min-height: 48px;
+    min-height: 20px;
+    font-size: 14px;
+    margin: 0;
+    font-weight: 700;
 }
 
 div.box div.textbox p.gcol{
@@ -148,7 +151,9 @@ div.textbox.prodtext{
 }
 
 div.textbox p.extra{
-    min-height: 72px;
+    min-height: 44px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 h2{

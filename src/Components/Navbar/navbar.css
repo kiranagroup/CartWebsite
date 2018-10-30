@@ -3,8 +3,12 @@ div.imgIt{
 }
 
 div.imgIt img{
-    width: 80%;
-    height: 7.2vw;
+    width: 70%;
+    height: 6.2vw;
+}
+
+div.design h4{
+    transform: translate(0,15%);
 }
 
 div.ibIt{
@@ -29,11 +33,15 @@ div.rightIt h6{
 }
 
 div.searchIt{
-    height: 55%;
+    height: 40%;
 }
 
 div.lsIt{
     padding-top: 2%;
+}
+
+div.h12{
+    height: 12px;
 }
 
 div.lsIt div h5{

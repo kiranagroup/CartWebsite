@@ -75,7 +75,6 @@ export const Reducer = (state={},action) =>{
 
     else if(action.type=='remove'){
         var obj = {}
-        console.log("in remove",state.added);
         for(let i=0;i<state.added.length;i++){
             if(state.added[i].Product['Product_ID']==action.payLoad.Product.Product.Product_ID){
                 obj=state.added[i];
@@ -91,8 +90,15 @@ export const Reducer = (state={},action) =>{
             localStorage.setItem('added', []);
         }
         localStorage.setItem('count', state.count);
-        console.log("in remove last",state.added);
         return {...state,'added':state.added,'count':state.count,'current':obj};
+    }
+    else if(action.type=='cartChange'){
+        if(!state.visible || state.visible==0){
+            return {...state,'visible':1};
+        }
+        else if(state.visible==1){
+            return{...state,'visible':0};
+        }
     }
 
     return state;

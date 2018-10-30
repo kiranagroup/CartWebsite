@@ -11,12 +11,19 @@ class Cart extends Component{
     constructor(props){
         super(props);
         this.state={props:this.props};
+        this.classes='hidden';
     }
     clearCart(){
         Store.dispatch({type:'removeAll'});
     }
     render(){
-        if(!this.props.visible){
+        if(this.props.totalProducts>0){
+            this.classes='';
+        }
+        else{
+            this.classes='hidden';
+        }
+        if(this.props.visible==0  || !this.props.visible){
             return(
               <></>  
             );
@@ -28,7 +35,7 @@ class Cart extends Component{
                     <h6 className="col-12 col-sm-12 centerIt">
                         Your Kirana Bill
                     </h6>
-                   <div className="col-12 col-sm-12">
+                   <div className={'col-12 col-sm-12 ' + this.classes}>
                         <p className="redIt" onClick={this.clearCart.bind(this)}>Clear All</p>
                     </div>
                     <div className="col-sm-12 col-12 nopad">
@@ -54,7 +61,8 @@ const mapStateToProps = (state) =>{
     if(state.added){
         let data = state.added;
         let count=state.count;
-        return {markedItems:data,totalProducts:count};
+        let visibl=state.visible;
+        return {markedItems:data,totalProducts:count,visible:visibl};
     }
     return {}
 }

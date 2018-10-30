@@ -7,6 +7,7 @@ class App extends Component {
   constructor(){
     super();
     var add = localStorage.getItem('added');
+    this.visible=false;
     // console.log(add);
     if(add){
     var added = JSON.parse(add);
