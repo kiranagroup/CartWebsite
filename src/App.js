@@ -19,7 +19,8 @@ class App extends Component {
   render() {
     return (
       // The main file leading to every HTML and JS
-      <Home></Home>
+      <Home>
+      </Home>
     );
   }
 }
