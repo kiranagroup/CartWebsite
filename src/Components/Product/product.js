@@ -22,13 +22,13 @@ class Product extends Component{
         return(
             <div className="row">
                 {this.items.map(Obj=>{
-                    if(this.countCheck==this.props.counter){
+                    if(this.countCheck===this.props.counter){
                         return;
                     }
                     var button = <Add Obj={Obj} changed={this.refresh.bind(this)}></Add>;
                     if(this.props.added){
                     for(var i=0;i<this.props.added.length;i++){
-                            if(Obj.Product_ID==this.props.added[i].Product.Product_ID){
+                            if(Obj.Product_ID===this.props.added[i].Product.Product_ID){
                                 button=<Counter Obj={Obj} quant={this.props.added[i].value} changed={this.refresh.bind(this)}></Counter> 
                             }
                         }

@@ -3,7 +3,7 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import icon from './../../images/logo.png';
 import {LoginSignup} from './LoginSignup/loginisignup';
 import '../../../node_modules/font-awesome/css/font-awesome.min.css';
-import {Searchbar} from './Searchbar/searchbar';
+import Searchbar from './Searchbar/searchbar';
 import './navbar.css';
 import Count from '../Cart/count';
 import Cart from '../Cart/cart';

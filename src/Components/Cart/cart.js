@@ -26,7 +26,7 @@ class Cart extends Component{
         else{
             this.classes='hidden';
         }
-        if(this.props.visible==0  || !this.props.visible){
+        if(this.props.visible===0  || !this.props.visible){
             return(
               <></>  
             );

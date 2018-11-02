@@ -43,11 +43,10 @@ export const searchElastic = (esClient, index, body) =>{
 	esClient.search({index: index, body: body})
 	.then(results => {
       console.log(`found ${results.hits.total} items in ${results.took}ms`);
-      console.log(`returned products:`);
-      console.log(results.hits.hits);
       console.log(results);
       console.log(`${body.query.bool.should.multi_match.query} in ${results.hits.hits[0]._source.Brand}`);
       console.log(`${body.query.bool.should.multi_match.query} in ${results.hits.hits[0]._source.Category}`);
+      return results;
     })
     .catch(err => {console.log(err);})
 }

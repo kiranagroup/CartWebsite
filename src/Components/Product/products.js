@@ -55,7 +55,7 @@ export default class Products extends Component{
         this.checkCategory(this.props.match.params.category);
         fetch('https://products-55187.firebaseio.com/products.json').then(response=>response.json().then(data=>{
             Object.keys(data).forEach(element => {
-                if(this.category==data[element].Cluster && data[element]['Pic_URL']){
+                if(this.category===data[element].Cluster && data[element]['Pic_URL']){
                     this.products.push(data[element]);
                 }
             });

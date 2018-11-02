@@ -8,7 +8,7 @@ export default class Counter extends Component{
         this.props=props;
     }
     addSub(event){
-        if(event.target.getAttribute('myvalue')=='add'){
+        if(event.target.getAttribute('myvalue')==='add'){
             var payload={'Product':this.props.Obj};
             Store.dispatch({type:'add',payLoad:payload});
             this.props.changed();

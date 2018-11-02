@@ -1,10 +1,17 @@
+import {
+    CHANGE_SEARCHFIELD,
+    REQUEST_PRODUCTS_PENDING,
+    REQUEST_PRODUCTS_SUCCESS,
+    REQUEST_PRODUCTS_FAIL
+    } from './constants';
+
 export const Reducer = (state={},action) =>{
 
-    if(action.type=='add'){
+    if(action.type==='add'){
         var flag=0;
         if(state.added){
             for(var i=0;i<state.added.length;i++){
-                if(state.added[i].Product['Product_ID']==action.payLoad.Product.Product_ID){
+                if(state.added[i].Product['Product_ID']===action.payLoad.Product.Product_ID){
                     state.added[i].value+=1;
                     state.count=parseInt(state.count)+1;
                     flag=1;
@@ -27,10 +34,10 @@ export const Reducer = (state={},action) =>{
         return {...state};
     }
 
-    else if(action.type=='sub'){
-        for(var i=0;i<state.added.length;i++){
-            if(state.added[i].Product['Product_ID']==action.payLoad.Product.Product_ID){
-                if(state.added[i].value==1){
+    else if(action.type==='sub'){
+        for(i=0;i<state.added.length;i++){
+            if(state.added[i].Product['Product_ID']===action.payLoad.Product.Product_ID){
+                if(state.added[i].value===1){
                     state.added.splice(i,1);
                     break;
                 }
@@ -44,18 +51,18 @@ export const Reducer = (state={},action) =>{
         return {...state};
     }
 
-    else if(action.type=='retain'){
+    else if(action.type==='retain'){
         if(action.payLoad){
             state= {...state,'added':action.payLoad.added,'count':action.payLoad.count};
         }
         return {...state};
     }
 
-    else if(action.type=='count'){
+    else if(action.type==='count'){
         return{...state};
     }
     
-    else if(action.type=='removeAll'){
+    else if(action.type==='removeAll'){
         localStorage.setItem('added',[]);
         localStorage.setItem('count',0);
         if(!state.added){
@@ -73,10 +80,10 @@ export const Reducer = (state={},action) =>{
         return {...state};
     }
 
-    else if(action.type=='remove'){
+    else if(action.type==='remove'){
         var obj = {}
         for(let i=0;i<state.added.length;i++){
-            if(state.added[i].Product['Product_ID']==action.payLoad.Product.Product.Product_ID){
+            if(state.added[i].Product['Product_ID']===action.payLoad.Product.Product.Product_ID){
                 obj=state.added[i];
                 state.added.splice(i,1);
                 state.count=state.count-action.payLoad.Product.value;
@@ -92,15 +99,52 @@ export const Reducer = (state={},action) =>{
         localStorage.setItem('count', state.count);
         return {...state,'added':state.added,'count':state.count,'current':obj};
     }
-    else if(action.type=='cartChange'){
-        if(!state.visible || state.visible==0){
+    else if(action.type==='cartChange'){
+        if(!state.visible || state.visible===0){
             return {...state,'visible':1};
         }
-        else if(state.visible==1){
+        else if(state.visible===1){
             return{...state,'visible':0};
         }
     }
 
     return state;
 
+}
+
+//Reducer for searchfield
+
+const initialStateSearch = {
+    searchField: ''
+}
+
+export const searchProducts = (state=initialStateSearch, action={}) =>{
+    switch(action.type){
+        case CHANGE_SEARCHFIELD:
+            return Object.assign({}, state, {searchField:action.payload});
+
+        default: 
+            return state;
+    }
+}
+
+//Reducer for storing search Results
+
+const initialStateProducts = {
+    isPending: false,
+    searchProductResults: {},
+    error: ''
+}
+
+export const requestProductsOnSearch =(state=initialStateProducts, action={}) => {
+    switch(action.type) {
+        case REQUEST_PRODUCTS_PENDING:
+            return Object.assign({}, state, {isPending: true})
+        case REQUEST_PRODUCTS_SUCCESS:
+            return Object.assign({}, state, {searchProductResults: action.payload, isPending: false})
+        case REQUEST_PRODUCTS_FAIL:
+            return Object.assign({}, state, {error: action.payload, isPending: false})
+
+        default: return state;
+    }
 }
