@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {setSearchField, requestProducts} from '../../../Models/actions'
 import elasticsearch from 'elasticsearch';
-import {searchElastic} from '../../../assets/functions'
 
 const mapStateToProps = state => {
 	return{
@@ -16,10 +15,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>{
 	return{
 		onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
-		requestSearchResults: (esClient, searchBody) => {
-			console.log(searchBody);
-			requestProducts(esClient, searchBody);
-		}
+		requestSearchResults: (esClient, searchBody) => requestProducts(esClient, searchBody),
 	}
 }
 
@@ -30,14 +26,14 @@ class Searchbar extends Component {
 		log: 'error'
 	});
 
-    searchBody = () => {return {
+    searchBody = (query) => {return {
 	    from: 0,
 	    query: {
 	    	bool:{
 	    		should:{
 					multi_match: {
 						fields: ['Brand', 'Category', 'Description'],
-						query: this.props.searchField,
+						query: query,
 						fuzziness: '2',
 					}
 				}
@@ -71,19 +67,21 @@ class Searchbar extends Component {
 		}
   	}};
 
-	onSearchChangeCall = (event) => {
-		this.props.onSearchChange(event);
-		if(this.props.searchField.length>1)
-			this.props.requestSearchResults(this.esClient, this.searchBody());
+	 componentWillReceiveProps(nextProps){
+		if(nextProps.searchField.length>2 &&
+			nextProps.isPending===false &&
+			nextProps.searchField != this.props.searchField){
+			this.props.requestSearchResults(this.esClient, this.searchBody(nextProps.searchField));		
+		}
 	}
 
-	render(){		
+	render(){
 		return(
 			<div>
 	            <input id='searchBar' 
 	            	type="text" 
 	            	placeholder="Search"
-	            	onChange={this.onSearchChangeCall}
+	            	onChange={this.props.onSearchChange}
 	            />
 			</div>
 			);

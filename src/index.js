@@ -8,11 +8,11 @@ import {Store} from './Models/Store';
 import {BrowserRouter} from 'react-router-dom';
 
 ReactDOM.render(
-	<BrowserRouter>
-		<Provider store={Store}>
+	<Provider store={Store}>
+		<BrowserRouter>
 			<App />
-		</Provider>
-	</BrowserRouter>, 
+		</BrowserRouter>
+	</Provider>, 
 	document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
