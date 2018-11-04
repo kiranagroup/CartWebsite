@@ -1,0 +1,6 @@
+#searchBarDiv{
+	position: relative;
+}
+#searchBar:focus + #searchlist{
+	display: block;
+}

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {setSearchField, requestProducts} from '../../../Models/actions'
 import elasticsearch from 'elasticsearch';
+import SearchList from './searchList';
+import './searchbar.css';
 
 const mapStateToProps = state => {
 	return{
@@ -52,7 +54,7 @@ class Searchbar extends Component {
 					max_score: {max: { script: "_score" } }
 				}
 			},
-			by_Category: {
+			by_category: {
 				terms: {
 					field: 'Category.keyword',
 					size: 10,
@@ -70,19 +72,21 @@ class Searchbar extends Component {
 	 componentWillReceiveProps(nextProps){
 		if(nextProps.searchField.length>2 &&
 			nextProps.isPending===false &&
-			nextProps.searchField != this.props.searchField){
+			nextProps.searchField !== this.props.searchField){
 			this.props.requestSearchResults(this.esClient, this.searchBody(nextProps.searchField));		
 		}
 	}
 
 	render(){
 		return(
-			<div>
-	            <input id='searchBar' 
+			<div id='searchBarDiv'>
+	            <input 
+	            	id='searchBar'
 	            	type="text" 
 	            	placeholder="Search"
 	            	onChange={this.props.onSearchChange}
 	            />
+	            <SearchList />
 			</div>
 			);
 	}
