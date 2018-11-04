@@ -17,16 +17,26 @@ class SearchList extends Component {
 		if(searchField.length>2 && Object.keys(searchResults).length){
 			const brands = searchResults.aggregations.by_brand.buckets;
 			const categs = searchResults.aggregations.by_category.buckets;
-
-			return(
-				<div id='searchlist'>
-				    <a href="#about">'{searchField}' in {brands[0].key}</a>
-					<a href="#base">'{searchField}' in {brands[1].key}</a>
-					<a href="#blog">'{searchField}' in {categs[0].key}</a>
-					<a href="#contact">'{searchField}' in {categs[1].key}</a>
-					<a href="#custom">Search '{searchField}'</a>
-				</div>
-			)
+			// if(brands.length && categs.length)
+				return(
+					<div id='searchlist'>
+						<a href="#custom">Search for '{searchField}'</a>
+						{(brands.length && categs.length)?
+							<div>
+							    <a href="#about">'{searchField}' in {brands[0].key}</a>
+								<a href="#base">'{searchField}' in {brands[1].key}</a>
+								<a href="#blog">'{searchField}' in {categs[0].key}</a>
+								<a href="#contact">'{searchField}' in {categs[1].key}</a>
+							</div>
+							:<div />
+						}
+					</div>
+				)
+			// else return (
+			// 		<div id='searchlist'>
+			// 			No results found
+			// 		</div>
+			// 	)
 		}
 		return <div />
 	}
