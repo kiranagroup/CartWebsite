@@ -2,8 +2,6 @@
 	display: none;
 	position: absolute;
 	z-index: 1;
-	/*margin-left: 1%;*/
-	/*margin-right: 1%; */
 	width: 100%;
     border-radius: 10px;
     box-shadow: 0px 2px 15px 1px rgba(0,0,0,0.5);
@@ -22,5 +20,13 @@
 }
 
 #searchlist a:hover{
+	background: #ddd;
+}
+
+#searchlist:active{
+	display: block;
+}
+
+.active{
 	background: #ddd;
 }

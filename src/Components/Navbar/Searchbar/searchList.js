@@ -20,13 +20,13 @@ class SearchList extends Component {
 			// if(brands.length && categs.length)
 				return(
 					<div id='searchlist'>
-						<a href="#custom">Search for '{searchField}'</a>
-						{(brands.length && categs.length)?
+						<a className='' href={`/search/q${searchField}/raw`}>Search for '{searchField}'</a>
+						{(brands.length>1 && categs.length>1)?
 							<div>
-							    <a href="#about">'{searchField}' in {brands[0].key}</a>
-								<a href="#base">'{searchField}' in {brands[1].key}</a>
-								<a href="#blog">'{searchField}' in {categs[0].key}</a>
-								<a href="#contact">'{searchField}' in {categs[1].key}</a>
+							    <a href={`/search/q${searchField}/b0`}>'{searchField}' in {brands[0].key}</a>
+								<a href={`/search/q${searchField}/b1`}>'{searchField}' in {brands[1].key}</a>
+								<a href={`/search/q${searchField}/c0`}>'{searchField}' in {categs[0].key}</a>
+								<a href={`/search/q${searchField}/c1`}>'{searchField}' in {categs[1].key}</a>
 							</div>
 							:<div />
 						}

@@ -10,7 +10,7 @@ class Collection extends Component{
         super();
     }
     callMe(event){
-        // console.log(event.target);
+        console.log(this.props);
         this.props.history.push('/product/'+event.target.getAttribute('myvalue'));
     }
     render(){
