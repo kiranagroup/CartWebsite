@@ -50,3 +50,56 @@ export const searchElastic = (esClient, index, body) =>{
     })
     .catch(err => {console.log(err);})
 }
+
+export const requestCollections = async (esClient, index='learn4') =>{
+	const body = {
+	    size: 0,
+		aggs: {
+			by_cluster: {
+				terms: {
+					field: 'Cluster.keyword',
+					size: 50,
+				},
+				aggs: {
+					by_category: {
+						terms:{
+							field: 'Category.keyword',
+							size: 1000
+						},
+						aggs: {
+							hits:  { top_hits: {size: 250} }
+						}
+					},
+					by_brand: {
+						terms:{
+							field: 'Brand.keyword',
+							size: 1000
+						},
+						aggs: {
+							hits:  { top_hits: {size: 250} }
+						}
+					}
+				}
+			},
+			by_category: {
+				terms: {
+					field: 'Category.keyword',
+					size: 100,
+					order: { max_score: 'desc' }
+				},
+				aggs: {
+					by_top_hit: { top_hits: {size: 100} },
+
+					max_score: {max: { script: "_score" } }
+				}
+			}
+		}
+  	};
+	console.log('Check');
+	esClient.search({index: index, body: body})
+	.then(results => {
+      console.log(results);
+      return results;
+    })
+    .catch(err => {console.log(err);})
+}

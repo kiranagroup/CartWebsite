@@ -4,15 +4,33 @@ import sample from './../../images/sample.jpg';
 import sample2 from './../../images/sample2.jpg';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { withRouter } from 'react-router'
+import elasticsearch from 'elasticsearch';
+import {requestCollections} from '../../assets/functions';
 
 class Collection extends Component{
     constructor(){
         super();
     }
+
+    esClient = new elasticsearch.Client({
+        host: 'localhost:9200',
+        log: 'error'
+    });
+
+    componentWillMount(){
+        // const fetchData = async () =>{
+        //     const result = await requestCollections(this.esClient);
+        //     return result;
+        // }
+        // fetchData().then(data => console.log('Here',data)).catch(console.log);
+        requestCollections(this.esClient);
+    }
+
     callMe(event){
         console.log(this.props);
         this.props.history.push('/product/'+event.target.getAttribute('myvalue'));
     }
+
     render(){
     return(
         <div className="coll pad">

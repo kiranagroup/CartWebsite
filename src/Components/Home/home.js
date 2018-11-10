@@ -28,7 +28,7 @@ export const Home = () =>{
 
 
            {/* <Route render={()=><h1>NO PAGE EXIST </h1>}/> */}
-
+           <Redirect to="/" />
         </Switch>
 
         

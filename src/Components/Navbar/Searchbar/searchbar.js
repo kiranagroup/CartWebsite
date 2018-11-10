@@ -4,6 +4,7 @@ import {setSearchField, requestProducts} from '../../../Models/actions'
 import elasticsearch from 'elasticsearch';
 import SearchList from './searchList';
 import './searchbar.css';
+import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = state => {
 	return{
@@ -92,4 +93,4 @@ class Searchbar extends Component {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Searchbar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Searchbar));
