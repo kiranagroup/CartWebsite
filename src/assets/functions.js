@@ -61,6 +61,9 @@ export const requestCollections = async (esClient, index='learn4') =>{
 					size: 50,
 				},
 				aggs: {
+					total_hits: {
+						top_hits: {size:500}
+					},
 					by_category: {
 						terms:{
 							field: 'Category.keyword',
@@ -79,18 +82,6 @@ export const requestCollections = async (esClient, index='learn4') =>{
 							hits:  { top_hits: {size: 250} }
 						}
 					}
-				}
-			},
-			by_category: {
-				terms: {
-					field: 'Category.keyword',
-					size: 100,
-					order: { max_score: 'desc' }
-				},
-				aggs: {
-					by_top_hit: { top_hits: {size: 100} },
-
-					max_score: {max: { script: "_score" } }
 				}
 			}
 		}
