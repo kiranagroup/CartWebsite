@@ -63,12 +63,12 @@ class Product extends Component{
 }
 
 const mapStateToProps=(state)=>{
-    if(state.added){
+    if(state.Reducer.added){
         let curr={};
-        if(state.current){
-            curr=state.current;
+        if(state.Reducer.current){
+            curr=state.Reducer.current;
         }
-        let add = state.added;
+        let add = state.Reducer.added;
         return {added:add,current:curr};
     }
     return {};

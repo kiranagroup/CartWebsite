@@ -61,10 +61,10 @@ class Cart extends Component{
 }
 
 const mapStateToProps = (state) =>{
-    if(state.added){
-        let data = state.added;
-        let count=state.count;
-        let visibl=state.visible;
+    if(state.Reducer.added){
+        let data = state.Reducer.added;
+        let count=state.Reducer.count;
+        let visibl=state.Reducer.visible;
         return {markedItems:data,totalProducts:count,visible:visibl};
     }
     return {}

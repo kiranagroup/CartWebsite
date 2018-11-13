@@ -16,8 +16,8 @@ const Count = (props) => {
 }
 
 const mapStateToProps = (state)=>{
-    if(state.count){
-        let count = state.count;
+    if(state.Reducer.count){
+        let count = state.Reducer.count;
         return{'count':count};
     }
     return{};

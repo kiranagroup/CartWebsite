@@ -5,8 +5,10 @@ import {
     REQUEST_PRODUCTS_FAIL
     } from './constants';
 
-export const Reducer = (state={},action) =>{
+// Reducer for Cart and Products Operations
 
+export const Reducer = (state={},action) =>{
+// For adding products
     if(action.type==='add'){
         var flag=0;
         if(state.added){
@@ -33,7 +35,7 @@ export const Reducer = (state={},action) =>{
         localStorage.setItem('count',state.count);
         return {...state};
     }
-
+// For subtracting products
     else if(action.type==='sub'){
         for(i=0;i<state.added.length;i++){
             if(state.added[i].Product['Product_ID']===action.payLoad.Product.Product_ID){
@@ -50,18 +52,18 @@ export const Reducer = (state={},action) =>{
         localStorage.setItem('count',state.count);
         return {...state};
     }
-
+//For getting products back in redux
     else if(action.type==='retain'){
         if(action.payLoad){
             state= {...state,'added':action.payLoad.added,'count':action.payLoad.count};
         }
         return {...state};
     }
-
+// To get count
     else if(action.type==='count'){
         return{...state};
     }
-    
+// To empty the cart  
     else if(action.type==='removeAll'){
         localStorage.setItem('added',[]);
         localStorage.setItem('count',0);
@@ -79,7 +81,7 @@ export const Reducer = (state={},action) =>{
         }
         return {...state};
     }
-
+// To remove a product from cart
     else if(action.type==='remove'){
         var obj = {}
         for(let i=0;i<state.added.length;i++){
@@ -99,6 +101,7 @@ export const Reducer = (state={},action) =>{
         localStorage.setItem('count', state.count);
         return {...state,'added':state.added,'count':state.count,'current':obj};
     }
+// To toggle visibility of cart
     else if(action.type==='cartChange'){
         if(!state.visible || state.visible===0){
             return {...state,'visible':1};
@@ -106,6 +109,44 @@ export const Reducer = (state={},action) =>{
         else if(state.visible===1){
             return{...state,'visible':0};
         }
+    }
+// To toggle brands in search pane
+    else if(action.type=='brand'){
+        if(state.brands){
+            if(state.brands.indexOf(action.payLoad)==-1){
+                let brand=state.brands;
+                brand.push(action.payLoad);
+                state={...state,'brands':brand,'bcount':brand.length};
+            }
+            else{
+                let brand=state.brands;
+                brand.splice(brand.indexOf(action.payLoad),1);
+                state={...state,'brands':brand,'bcount':brand.length};
+            }
+        }
+        else{
+            state={...state,'brands':[action.payLoad],'bcount':1};
+        }
+        return {...state};
+    }
+// To toggle brands in search pane
+    else if(action.type=='category'){
+        if(state.categories){
+            if(state.categories.indexOf(action.payLoad)==-1){
+                let category=state.categories;
+                category.push(action.payLoad);
+                state={...state,'categories':category,'ccount':category.length};
+            }
+            else{
+                let category=state.categories;
+                category.splice(category.indexOf(action.payLoad),1);
+                state={...state,'categories':category,'ccount':category.length};
+            }
+        }
+        else{
+            state={...state,'categories':[action.payLoad],'ccount':1};
+        }
+        return {...state};
     }
 
     return state;

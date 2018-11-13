@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import '../Subscriptions/subs.css';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Product from './product';
+import {Pane} from '../searchPane/pane';
 // import {baby} from '../../Categories/baby';
 // import {beverages} from '../../Categories/beverages';
 // import {breads} from '../../Categories/breads';
@@ -98,9 +99,8 @@ export default class Products extends Component{
         }
         return(
             <div className="row">
-            <div className="col-lg-2 col-md-2">
-                <h1>Search</h1>
-                <h2>Pane</h2>
+            <div className="col-lg-2 col-md-2" style={{padding:'0 0 0 2px'}}>
+            <Pane category={this.category}></Pane>
             </div>
             <div className="col-lg-10 col-md-10">
                 <Product items={this.products} counter={this.state.count}></Product>
