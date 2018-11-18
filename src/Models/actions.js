@@ -13,7 +13,7 @@ export const setSearchField = (text) => ({
 
 export const requestProducts = (esClient, searchBody) =>{
 	Store.dispatch({type: REQUEST_PRODUCTS_PENDING});
-	esClient.search({index: 'learn4', body: searchBody})
+	esClient.search({index: 'website', body: searchBody})
 	.then(data => {
 		if(data){
 			Store.dispatch({

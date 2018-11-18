@@ -51,7 +51,7 @@ export const searchElastic = (esClient, index, body) =>{
     .catch(err => {console.log(err);})
 }
 
-export const requestCollections = async (esClient, index='learn5') =>{
+export const requestCollections = (esClient, index='website', state) =>{
 	const body = {
 	    size: 0,
 		aggs: {
@@ -106,8 +106,61 @@ export const requestCollections = async (esClient, index='learn5') =>{
   	};
 	esClient.search({index: index, body: body})
 	.then(results => {
-      console.log(results);
-      return results;
+  		console.log('After res', results);
+    	return results;
     })
     .catch(err => {console.log(err);})
 }
+
+export const reqCollectionQueryBody = {
+    size: 0,
+	aggs: {
+		by_cluster: {
+			terms: {
+				field: 'Cluster.keyword',
+				size: 50,
+			},
+			aggs: {
+				total_hits: {
+					top_hits: {size:500}
+				},
+				by_category: {
+					terms:{
+						field: 'Category.keyword',
+						size: 1000
+					},
+					aggs: {
+						hits:  { top_hits: {size: 250} },
+						by_price: {
+							percentiles: {
+								field: "Price",
+								percents: [25,50,75,99.9]
+							}
+						}
+					}
+				},
+				by_brand: {
+					terms:{
+						field: 'Brand.keyword',
+						size: 1000
+					},
+					aggs: {
+						hits:  { top_hits: {size: 250} },
+						by_price: {
+							percentiles: {
+								field: "Price",
+								percents: [25,50,75,99.9]
+							}
+						}
+					}
+				},
+				by_price: {
+					percentiles: {
+						field: "Price",
+						percents: [25,50,75,99.9]
+					}
+				}
+			}
+		}
+	}
+};

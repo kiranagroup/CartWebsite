@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux'
-import {setSearchField, requestProducts} from '../../../Models/actions'
+import {connect} from 'react-redux';
+import {setSearchField, requestProducts} from '../../../Models/actions';
 import elasticsearch from 'elasticsearch';
 import SearchList from './searchList';
 import './searchbar.css';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import * as firebase from 'firebase/app';
+import 'firebase/database';
+import {elasticconfig} from '../../../assets/service-act.js'
+
 
 const mapStateToProps = state => {
 	return{
@@ -25,7 +29,8 @@ const mapDispatchToProps = dispatch =>{
 class Searchbar extends Component {
 
 	esClient = new elasticsearch.Client({
-		host: 'localhost:9200',
+		host: elasticconfig.host,
+		httpAuth: elasticconfig.httpAuth,
 		log: 'error'
 	});
 
@@ -70,7 +75,7 @@ class Searchbar extends Component {
 		}
   	}};
 
-	 componentWillReceiveProps(nextProps){
+ 	componentWillReceiveProps(nextProps){
 		if(nextProps.searchField.length>2 &&
 			nextProps.isPending===false &&
 			nextProps.searchField !== this.props.searchField){

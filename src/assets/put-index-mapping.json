@@ -1,16 +1,17 @@
 {
-	"settings":{
-		"index":{
-			"analysis":{
-				"normalizer":{
-					"normalizer_case_insensitive":{
-						"type": "custom",
-						"filter": ["lowercase"]
-					}
-				}
-			}
-		}
-	},
+    "settings":{
+        "index":{
+            "max_inner_result_window": "550",
+            "analysis":{
+                "normalizer":{
+                    "normalizer_case_insensitive":{
+                        "type": "custom",
+                        "filter": ["lowercase"]
+                    }
+                }
+            }
+        }
+    },
     "mappings": {
         "products": {
             "properties": {
@@ -62,7 +63,7 @@
                     }
                 },
                 "Price": {
-                    "type": "text",
+                    "type": "double",
                     "fields": {
                         "keyword": {
                             "type": "keyword",
