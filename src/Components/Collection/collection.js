@@ -23,11 +23,63 @@ class Collection extends Component{
         log: 'error'
     });
 
+    esClient2 = new elasticsearch.Client({
+        host: 'localhost:9200',
+        log: 'error'
+    });
+
     componentWillMount(){
         this.requestCollections(this.esClient);
     }
 
     componentDidMount(){
+        const testQ = {
+            query: {
+                bool: {
+                    must: [
+                        {
+                            terms: {
+                                'Brand.keyword': ['nivea', 'patanjali'],
+                            }
+                        },
+                        {
+                            terms:{
+                                'Category.keyword': ['Snacks and namkeen', 'hair care']
+                            }
+                        },
+                       {
+                         "range": {
+                            "Price": { "gte" : 10, "lte" : 100 }
+                          }
+                        }
+                    ]
+                }
+            },
+            aggs: {
+                by_price: {
+                    percentiles: {
+                        field: "Price",
+                        percents: [25,50,75,100]
+                    }
+                },
+                hit_by_percentile: {
+                    range:{
+                        field: "Price",
+                        ranges: [
+                            {from: {buckets_path: 'by_price'}}                       
+                        ]
+                    },
+                    aggs: {
+                        by_top_hit: { top_hits: {size: 15} },
+                        max_score: {max: { script: "_score" } }
+                    }
+                }
+            }
+        }
+
+        this.esClient2.search({index: 'learn5', body: testQ})
+        .then(results => {console.log('testQ', results)})
+        .catch(console.log)
     }
 
     requestCollections = () =>{
