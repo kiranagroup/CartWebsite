@@ -164,3 +164,125 @@ export const reqCollectionQueryBody = {
 		}
 	}
 };
+
+export const searchPaneQueryBody = (brands, categories, lowBound=null, highBound=null) => {
+	let body;
+	if(brands.length && categories.length){
+        body = {
+            size: 1000,
+            query: {
+                bool: {
+                    must: [
+                        {
+                            terms: {
+                                'Brand.keyword': brands
+                            }
+                        },
+                        {
+                            terms:{
+                                'Category.keyword': categories
+                            }
+                        },
+                  	 	{
+                         "range": {
+                            "Price": { "gte" : lowBound, "lte" : highBound }
+                          }
+                        }
+                    ]
+                }
+            },
+            aggs: {
+                by_price: {
+                    percentiles: {
+                        field: "Price",
+                        percents: [25,50,75,100]
+                    }
+                }
+            }
+        }	
+    }
+	else if(brands.length){
+        body = {
+            size: 1000,
+            query: {
+                bool: {
+                    must: [
+                        {
+                            terms: {
+                                'Brand.keyword': brands
+                            }
+                        },
+                       	{
+                         "range": {
+                            "Price": { "gte" : lowBound, "lte" : highBound }
+                          }
+                        }
+                    ]
+                }
+            },
+            aggs: {
+                by_price: {
+                    percentiles: {
+                        field: "Price",
+                        percents: [25,50,75,100]
+                    }
+                }
+            }
+        }		
+    }
+	else if(categories.length){
+        body = {
+            size: 1000,
+            query: {
+                bool: {
+                    must: [
+                        {
+                            terms:{
+                                'Category.keyword': categories
+                            }
+                        },
+                       {
+                         "range": {
+                            "Price": { "gte" : lowBound, "lte" : highBound }
+                          }
+                        }
+                    ]
+                }
+            },
+            aggs: {
+                by_price: {
+                    percentiles: {
+                        field: "Price",
+                        percents: [25,50,75,100]
+                    }
+                }
+            }
+        }		
+    }
+    else{
+        body = {
+            size: 1000,
+            query: {
+                bool: {
+                    must: [
+                       	{
+                         "range": {
+                            "Price": { "gte" : lowBound, "lte" : highBound }
+                          }
+                        }
+                    ]
+                }
+            },
+            aggs: {
+                by_price: {
+                    percentiles: {
+                        field: "Price",
+                        percents: [25,50,75,100]
+                    }
+                }
+            }
+        }
+    }
+
+    return body;
+}

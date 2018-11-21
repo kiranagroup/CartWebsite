@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import '../Subscriptions/subs.css';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Product from './product';
-import {Pane} from '../searchPane/pane';
+import Pane from '../searchPane/pane';
 // import {baby} from '../../Categories/baby';
 // import {beverages} from '../../Categories/beverages';
 // import {breads} from '../../Categories/breads';
