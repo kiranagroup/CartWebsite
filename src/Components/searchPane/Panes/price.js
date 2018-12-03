@@ -28,7 +28,11 @@ class Price extends Component{
         .catch(err=>
                 console.log(err));
     }
-    editPrice(price){
+    editPrice(low,high){
+        var price={
+            low:low,
+            high:high
+        };
         Store.dispatch({'type':'price','payLoad':price});
     }
     render(){
@@ -49,10 +53,10 @@ class Price extends Component{
                         </div>
                     )
                 })} */}
-                <p onClick={this.editPrice.bind(this,'25.0')} className={this.props.prices.indexOf('25.0')==-1?'pane':'selected pane'}>{this.price['25.0']}</p>
-                <p onClick={this.editPrice.bind(this,'50.0')} className={this.props.prices.indexOf('50.0')==-1?'pane':'selected pane'}>{this.price['50.0']}</p>
-                <p onClick={this.editPrice.bind(this,'75.0')} className={this.props.prices.indexOf('75.0')==-1?'pane':'selected pane'}>{this.price['75.0']}</p>
-                <p onClick={this.editPrice.bind(this,'99.9')} className={this.props.prices.indexOf('99.9')==-1?'pane':'selected pane'}>{this.price['99.9']}</p>    
+                <p onClick={this.editPrice.bind(this,null,this.price['25.0'])} className={this.props.prices.indexOf(this.price['25.0'])==-1?'pane':'selected pane'}>{this.price['25.0']}</p>
+                <p onClick={this.editPrice.bind(this,this.price['25.0'],this.price['50.0'])} className={this.props.prices.indexOf(this.price['50.0'])==-1?'pane':'selected pane'}>{this.price['50.0']}</p>
+                <p onClick={this.editPrice.bind(this,this.price['50.0'],this.price['75.0'])} className={this.props.prices.indexOf(this.price['75.0'])==-1?'pane':'selected pane'}>{this.price['75.0']}</p>
+                <p onClick={this.editPrice.bind(this,this.price['99.9'],null)} className={this.props.prices.indexOf(this.price['99.9'])==-1?'pane':'selected pane'}>{this.price['99.9']}</p>    
             </div>
         )
     }
@@ -61,7 +65,7 @@ class Price extends Component{
 const mapStateToProps = (state)=>{
     if(state.Reducer.prices){
         let price = state.Reducer.prices;
-        let current = state.Reducer.pcount; 
+        let current = state.Reducer.pcount;
         return{prices:price,pcount:current}
     }
     return {prices:[]}

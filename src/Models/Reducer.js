@@ -148,6 +148,34 @@ export const Reducer = (state={},action) =>{
         }
         return {...state};
     }
+    else if(action.type=='price'){
+        if(state.prices){
+            var price=null;
+            if(action.payLoad.high==null){
+                price=action.payLoad.low;
+            }
+            else{
+                price=action.payLoad.high;
+            }
+            if(state.prices.indexOf(price)!=-1){
+                state={...state,'prices':[],plow:null,phigh:null,'pcount':0};
+            }
+            else{
+                state={...state,'prices':[price],plow:action.payLoad.low,phigh:action.payLoad.high};
+            }
+        }
+        else{
+            var price=null;
+            if(action.payLoad.high==null){
+                price=action.payLoad.low;
+            }
+            else{
+                price=action.payLoad.high;
+            }
+            state={...state,'pcount':1,'prices':[price],plow:action.payLoad.low,phigh:action.payLoad.high};
+        }
+        return {...state};
+    }
 
     return state;
 

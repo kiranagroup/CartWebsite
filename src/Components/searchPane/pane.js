@@ -2,6 +2,8 @@ import React,{Component} from 'react';
 import Category from './Panes/category';
 import Brand from './Panes/brand';
 import Price from './Panes/price';
+import './Panes/panes.css';
+import {connect} from 'react-redux';
 import elasticsearch from 'elasticsearch';
 import {searchPaneQueryBody} from '../../assets/functions';
 import {elasticconfig} from '../../assets/service-act.js'
@@ -39,8 +41,36 @@ class Pane extends Component{
 	            <Category category={this.props.category}></Category>
 	            <Brand category={this.props.category}></Brand>
 	            <Price category={this.props.category}></Price>
+                <button
+                className="selected"
+                onClick={
+                    ()=>{
+                        this.requestFilteredData(this.props.brands,this.props.categories,this.props.plow,this.props.phigh);
+                    }
+                }>
+                    Apply Filters
+                </button>
 	        </div>
 	    );
 	}
 }
-export default Pane;
+
+const mapStateToProps = (state) =>{
+    var brands = [];
+    var categories=[];
+    var plow=null,phigh=null;
+    if(state.Reducer.brands){
+        brands=state.Reducer.brands;
+    }
+    if(state.Reducer.categories){
+        categories=state.Reducer.categories;
+    }
+    if(state.Reducer.plow){
+        plow=state.Reducer.plow;
+    }
+    if(state.Reducer.phigh){
+        phigh=state.Reducer.phigh;
+    }
+    return{brands:brands,categories:categories,plow:plow,phigh:phigh};
+} 
+export default connect(mapStateToProps)(Pane);

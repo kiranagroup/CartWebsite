@@ -32,3 +32,14 @@ div.margBottom{
     margin-bottom: 15%;
 }
 
+button.selected{
+    background-color: #D90171;
+    color: white;
+    border-color: #D90171;
+    border-radius:3px;
+    border:none;
+    padding: 2% 10%;
+    cursor: pointer;
+    font-weight: 500;
+}
+
