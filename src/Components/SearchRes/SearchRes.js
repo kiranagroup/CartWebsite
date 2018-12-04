@@ -29,29 +29,22 @@ class SearchRes extends Component {
     }
 
     updateProducts = () =>{
-    	// this.setState({products: []});
 		switch(this.props.match.params.type){
 			case 'b0': this.setState({products: this.props.searchResults.aggregations.by_brand.buckets[0].by_top_hit.hits.hits});
 				break;
-			case 'b1': this.products.push(...this.props.searchResults.aggregations.by_brand.buckets[1].by_top_hit.hits.hits);
+			case 'b1': this.setState({products: this.props.searchResults.aggregations.by_brand.buckets[1].by_top_hit.hits.hits});
 				break;
-			case 'c0': this.products.push(...this.props.searchResults.aggregations.by_category.buckets[0].by_top_hit.hits.hits);
+			case 'c0': this.setState({products: this.props.searchResults.aggregations.by_category.buckets[0].by_top_hit.hits.hits});
 				break;
-			case 'c1': this.products.push(...this.props.searchResults.aggregations.by_category.buckets[1].by_top_hit.hits.hits);
+			case 'c1': this.setState({products: this.props.searchResults.aggregations.by_category.buckets[1].by_top_hit.hits.hits});
 				break;
-			default: this.products.push(...this.props.searchResults.hits.hits);
+			default: this.setState({products: this.props.searchResults.hits.hits});
 		}
     }
 
 	componentDidMount(){
-		// let type=this.props.match.params.type;
-		// let resultRef=this.props.searchResults.by_brand.buckets.[0]
-		// if(type==='b0'){
-		// 	Object.keys(this.props.searchResults.by_brand)
-		// }
 		this.updateProducts();
-
-        if(this.products){
+        if(this.state.products){
             this.gotData=true;
             this.gotError=false;
             this.error='';
@@ -62,17 +55,12 @@ class SearchRes extends Component {
         }
         this.setState({});
 	}
-	componentDidUpdate(prevProps){
-		if(prevProps.searchResults!==this.props.searchResults){
-			this.setState({products: []});
-			this.products=[];
-			this.updateProducts();
-		console.log('Hi');
 
-		}
-	}
 	componentWillReceiveProps(newProps){
-
+		if(newProps.match.params.type !== this.props.match.params.type
+			|| newProps.match.params.query !== this.props.match.params.query){
+	    	this.updateProducts();
+		}
 	}
 
     render(){

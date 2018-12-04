@@ -21,7 +21,7 @@ class SearchProduct extends Component{
         this.countCheck=0;
         return(
             <div className="row">
-                {this.items.map(Obj=>{
+                {this.props.items.map(Obj=>{
                     if(this.countCheck===this.props.counter){
                         return;
                     }
@@ -35,7 +35,7 @@ class SearchProduct extends Component{
                     }
                     this.countCheck++;
                     return(
-                        <div key={Obj._source["Product ID"]} className="col-lg-3 col-md-4 col-sm-6 col-6">
+                        <div  className="col-lg-3 col-md-4 col-sm-6 col-6">
                             <div className="box prod">
                                 <div className="imgbox">
                                     <img src={Obj._source["Pic URL"]} alt=""/>
