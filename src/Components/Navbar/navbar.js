@@ -27,7 +27,9 @@ class Navbar extends Component{
             {/* For Logo and ShopName */}
             <div className="col-sm-3 row outside">
                 <div className="col-sm-6 imgIt ibIt rightIt">
-                    <img src={icon} alt=""/>
+                    <a href="/">
+                        <img src={icon} alt="Logo"/>
+                    </a>
                 </div>
                 <div className="col-sm-6 ibIt">
                 <div className="design">

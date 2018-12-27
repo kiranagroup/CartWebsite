@@ -1,0 +1,168 @@
+div.modal.block{
+    display: block !important;
+    padding-top: 7.5%;
+    background: rgba(0,0,0,0.5);
+}
+
+div.modal-header{
+    border-bottom: none !important;
+    padding: 0 !important;
+}
+
+div.modal-header button.close{
+    cursor: pointer;
+    margin-right: -0.5rem;
+}
+
+div.modal-body{
+    padding-top: 0 !important;
+}
+
+div.modal-footer{
+    border-top: none !important;
+    padding-top: 0 !important;
+}
+
+div.modal-footer button{
+    padding: 0.35% 5% !important;
+}
+
+div.modal input, div.modal select{
+    margin-top: 2.5%;
+    border-radius: 5px;
+    padding: 0 0.5%
+}
+
+div.modal p{
+    margin-bottom: 0;
+    margin-top: 2.5%;
+}
+
+div.modal p.error{
+    color:red;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+div.payment div.headtab{
+    background-color: #0000FF;
+    color:white;
+    padding: 1% 0;
+    border: 1px solid black;
+}
+
+div.payment div.headtab div.heading{
+    text-align: center
+}
+
+div.payment div.headtab div.heading h5{
+    margin-bottom: 0;
+}
+
+div.payment div.itemrow{
+    background: #DBDBDB;
+    color:black;
+    padding: 1% 0;
+    border-radius: 15px;
+    border: 0.5px solid black;
+    border-top: none;
+}
+
+div.payment div.itemrow div.itemtab{
+    text-align: center;
+}
+
+div.payment div.itemrow div.itemtab.linemid{
+    padding-top: 1%;
+}
+
+div.payment div.itemrow div.itemtab button{
+    border-radius: 50%;
+    width: 7%;
+    padding: 0;
+    font-weight: 900;
+    color: black;
+    background: white;
+    border: 1px solid black;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+div.payment div.itemrow div.itemtab h6.quantity{
+    display: inline-block;
+    margin: 0 5%
+}
+
+div.payment div.lastrow{
+    margin-top: 5%;
+}
+
+div.payment i, button.nocartbtn i{
+    transform: translateY(14%);
+    margin-left: 2.5%;
+    color: #0000FF;
+    font-size: 26px;
+}
+
+div.payment div.lasttab button.lastbtn{
+    padding: 5% .5%;
+    background: #DBDBDB;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.5);
+    color:grey;
+    cursor: pointer;
+}
+
+div.payment div.lasttab button.lastbtn.short{
+    margin-bottom: 5%;
+    padding: 7% .5%;
+}
+
+div.payment div.lasttab button.lastbtn2{
+    width: 100%;
+    color: black;
+    background: #FFF2CC;
+    border: 1px solid #D6B656;
+    padding: 3.5% .5%;
+    cursor: pointer;
+}
+
+button.nocartbtn{
+    border-radius: 10px;
+    width: 175px;
+    height: 50px;
+    color: black;
+    background: #FFF2CC;
+    border: 1px solid #D6B656;
+    cursor: pointer;
+}
+
+button.nocartbtn b{
+    vertical-align: super;
+}
+
+div.payment div.lasttab:last-of-type{
+    background: #DBDBDB;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+    padding: .5% 0;
+}
+
+div.payment hr{
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,1);
+    margin: 1% 1%;
+}
+
+@media(min-width:991px){
+    div.payment div.lasttab div.col-8{
+        padding-left: 20%;
+        text-align: left;
+    }
+}
+

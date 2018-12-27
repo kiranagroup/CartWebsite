@@ -176,6 +176,11 @@ export const Reducer = (state={},action) =>{
         }
         return {...state};
     }
+    
+    else if(action.type=='pay'){
+            state={...state,'payStart':action.payLoad};
+            return {...state};
+    }
 
     return state;
 

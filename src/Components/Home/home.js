@@ -4,7 +4,9 @@ import {Subs} from '../Subscriptions/subs';
 import Collection from '../Collection/collection';
 import Products from '../Product/products';
 import SearchRes from '../SearchRes/SearchRes';
+import Payment from '../Pay/payment';
 import {Route,Switch,Redirect} from 'react-router-dom';
+import Pay from '../Pay/pay';
 
 export const Home = () =>{
     return(
@@ -15,16 +17,19 @@ export const Home = () =>{
 
         <Switch>
           <Route path="/" exact render={()=>
-            <div> 
-            <Subs></Subs>
-            <br/>
-            <Collection></Collection>
+            <div>
+              <Pay></Pay>
+              <div> 
+                <Subs></Subs>
+                <br/>
+                <Collection></Collection>
+              </div>
             </div>
             }></Route>
           <Route path="/product/:category" exact 
         component={Products}></Route>
           <Route path="/search/q:query/:type?" exact component={SearchRes}></Route>
-          {/* <Route path="/third" component={Third}></Route> */}
+          <Route path="/payment" component={Payment}></Route>
 
 
            { <Route render={()=><h1>NO PAGE EXIST </h1>}/> }

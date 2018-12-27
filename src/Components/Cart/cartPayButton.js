@@ -1,4 +1,5 @@
 import React from 'react';
+import {Store} from '../../Models/Store';
 
 export const CartPayButton = (props) =>{
     var clas='';
@@ -7,7 +8,9 @@ export const CartPayButton = (props) =>{
     }
     return(
         <React.Fragment>
-            <button className={clas}>Pay</button>
+            <button onClick={()=>{
+                Store.dispatch({'type':'pay','payLoad':true});
+            }} className={clas}>Pay</button>
         </React.Fragment>
     );
 }
